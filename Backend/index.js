@@ -1,4 +1,4 @@
-const lib = require("./lib");
+import lib from "./lib";
 
-module.exports = lib.default;
+export default lib;
 Object.assign(module.exports, lib);

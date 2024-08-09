@@ -37,13 +37,13 @@ function Login() {
   };
   return (
     <>
-      <div className="flex h-screen items-center justify-center">
+      <div className="flex h-screen items-center justify-center bg-gray-900">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="border border-white px-6 py-2 rounded-md space-y-3 w-96"
         >
           <h1 className="text-2xl text-center">
-            Chat<span className="text-green-500 font-semibold">App</span>
+            <span className="text-green-500 font-semibold">Chatigo</span>
           </h1>
           <h2 className="text-xl text-white font-bold">Login</h2>
           <br />
@@ -99,19 +99,18 @@ function Login() {
           )}
           {/* Text & Button */}
           <div className="flex justify-between">
-            <p>
+            <p className="text-white">
               New user?
               <Link
                 to="/signup"
-                className="text-blue-500 underline cursor-pointer ml-1"
-              >
+                className="text-blue-500 underline cursor-pointer ml-1">
                 Signup
               </Link>
             </p>
             <input
               type="submit"
               value="Login"
-              className="text-white bg-green-500 px-2 py-1 cursor-pointer rounded-lg"
+              className="text-white bg-blue-500 px-2 py-1 cursor-pointer rounded-lg"
             />
           </div>
         </form>
