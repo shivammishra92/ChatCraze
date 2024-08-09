@@ -26,7 +26,7 @@ function Login() {
         if (response.data) {
           toast.success("Login successful");
         }
-        localStorage.setItem("ChatApp", JSON.stringify(response.data));
+        localStorage.setItem("Chatigo", JSON.stringify(response.data));
         setAuthUser(response.data);
       })
       .catch((error) => {
