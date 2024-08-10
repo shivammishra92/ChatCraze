@@ -2,9 +2,11 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import createTokenAndSaveCookie from "../jwt/generateToken.js";
 
+
 //signup controller
 export const signup = async (req, res) => {
   const { fullname, email, password, confirmPassword } = req.body;
+  //console.log("reached user cont")
   try {
     if (password !== confirmPassword) {
       return res.status(400).json({ error: "Passwords do not match" });
@@ -13,6 +15,7 @@ export const signup = async (req, res) => {
     if (user) {
       return res.status(400).json({ error: "User already registered" });
     }
+
     // Hashing the password
     const hashPassword = await bcrypt.hash(password, 10);
     const newUser = await new User({
@@ -37,6 +40,8 @@ export const signup = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+
 
 //login controller
 export const login = async (req, res) => {
