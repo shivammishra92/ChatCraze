@@ -30,13 +30,12 @@ function Signup() {
       confirmPassword: data.confirmPassword,
     };
     // console.log(userInfo);
-    await axios
-      .post("/api/user/signup", userInfo)
+    await axios.post("/api/user/signup", userInfo)
       .then((response) => {
         if (response.data) {
           toast.success("Signup successful");
         }
-        localStorage.setItem("Chatigo", JSON.stringify(response.data));
+        localStorage.setItem("Chatigo", JSON.stringify(response.data));//to use this data further in other components
         setAuthUser(response.data);
       })
       .catch((error) => {
@@ -45,6 +44,7 @@ function Signup() {
         }
       });
   };
+
   return (
     <>
       <div className="flex h-screen items-center justify-center  bg-[url('https://img.freepik.com/free-vector/color-seamless-space-pattern_102902-2360.jpg?w=900&t=st=1723231138~exp=1723231738~hmac=659987eea3c735ed06dd064d7f6576964ba52f6bc80a744dc200f3ea4cd358a1')]">

@@ -20,8 +20,7 @@ function Login() {
       password: data.password,
     };
     // console.log(userInfo);
-    axios
-      .post("/api/user/login", userInfo)
+    axios.post("/api/user/login", userInfo)
       .then((response) => {
         if (response.data) {
           toast.success("Login successful");
@@ -35,6 +34,7 @@ function Login() {
         }
       });
   };
+  
   return (
     <>
       <div className="flex h-screen items-center justify-center bg-[url('https://img.freepik.com/free-vector/color-seamless-space-pattern_102902-2360.jpg?w=900&t=st=1723231138~exp=1723231738~hmac=659987eea3c735ed06dd064d7f6576964ba52f6bc80a744dc200f3ea4cd358a1')]">

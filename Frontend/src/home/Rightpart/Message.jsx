@@ -1,7 +1,7 @@
 import React from "react";
 
 function Message({ message }) {
-  const authUser = JSON.parse(localStorage.getItem("ChatApp"));
+  const authUser = JSON.parse(localStorage.getItem("Chatigo"));
   const itsMe = message.senderId === authUser.user._id;
 
   const chatName = itsMe ? " chat-end" : "chat-start";

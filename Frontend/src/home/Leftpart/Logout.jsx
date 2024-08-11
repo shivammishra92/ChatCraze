@@ -4,13 +4,15 @@ import { BiLogOutCircle } from "react-icons/bi";
 import axios from "axios";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+
+
 function Logout() {
   const [loading, setLoading] = useState(false);
   const handleLogout = async () => {
     setLoading(true);
     try {
       const res = await axios.post("/api/user/logout");
-      localStorage.removeItem("ChatApp");
+      localStorage.removeItem("Chatigo");
       Cookies.remove("jwt");
       setLoading(false);
       toast.success("Logged out successfully");

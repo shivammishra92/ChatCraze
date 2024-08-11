@@ -4,12 +4,13 @@ import { useSocketContext } from "../../context/SocketContext.jsx";
 import { CiMenuFries } from "react-icons/ci";
 import avatar2 from '../../../images/avatar2.jpg'
 
-function Chatuser() {
+function Chatuser({user}) {
   const { selectedConversation } = useConversation();
   const { onlineUsers } = useSocketContext();
   const getOnlineUsersStatus = (userId) => {
     return onlineUsers.includes(userId) ? "Online" : "Offline";
   };
+  //const isOnline = onlineUsers.includes(user._id);
 
   // console.log(selectedConversation.fullname);
   return (
@@ -21,7 +22,8 @@ function Chatuser() {
         <CiMenuFries className="text-white text-xl" />
       </label>
       <div className="ml-7 flex space-x-3 items-center justify-center h-[8vh] bg-gray-800">
-        <div className="avatar online">
+        {/* <div className={`avatar ${isOnline ? "online" : ""}`}> */}
+        <div className={`avatar online`}>
           <div className="w-16 rounded-full">
             <img src={avatar2} />
           </div>

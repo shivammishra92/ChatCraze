@@ -9,8 +9,7 @@ function Left() {
       <Search />
       <div
         className=" flex-1  overflow-y-auto"
-        style={{ minHeight: "calc(84vh - 10vh)" }}
-      >
+        style={{ minHeight: "calc(84vh - 10vh)" }}>
         <Users />
       </div>
       <Logout />
