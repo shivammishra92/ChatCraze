@@ -4,15 +4,19 @@ import { useSocketContext } from "../../context/SocketContext.jsx";
 import { CiMenuFries } from "react-icons/ci";
 import avatar2 from '../../../images/avatar2.jpg'
 
-function Chatuser({user}) {
+
+function Chatuser() {
   const { selectedConversation } = useConversation();
   const { onlineUsers } = useSocketContext();
-  const getOnlineUsersStatus = (userId) => {
-    return onlineUsers.includes(userId) ? "Online" : "Offline";
-  };
-  //const isOnline = onlineUsers.includes(user._id);
 
-  // console.log(selectedConversation.fullname);
+  const getOnlineUsersStatus = (userId) => {
+    return onlineUsers.includes(userId) ? "online" : "offline";
+  };
+  // console.log(selectedConversation);
+
+  //const isOnline = onlineUsers.includes(user._id);
+  //console.log(onlineUsers);
+   
   return (
     <div className="ml-0 relative flex items-end h-[8%] justify-start gap-4 bg-slate-800  rounded-sm">
       <label
@@ -22,8 +26,9 @@ function Chatuser({user}) {
         <CiMenuFries className="text-white text-xl" />
       </label>
       <div className="ml-7 flex space-x-3 items-center justify-center h-[8vh] bg-gray-800">
-        {/* <div className={`avatar ${isOnline ? "online" : ""}`}> */}
-        <div className={`avatar online`}>
+        {/* <div className={`avatar online`}> */}
+        <div className={`avatar ${getOnlineUsersStatus(selectedConversation._id)}`}>
+
           <div className="w-16 rounded-full">
             <img src={avatar2} />
           </div>

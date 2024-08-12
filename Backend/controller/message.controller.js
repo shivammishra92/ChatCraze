@@ -43,9 +43,10 @@ export const sendMessage = async (req, res) => {
 //now to fetch msgs from the database
 export const getMessage = async (req, res) => {
   try {
-    const { id: chatUser } = req.params;
+    const { id: chatUser } = req.params;//receiver
     const senderId = req.user._id; // current logged in user
     let conversation = await Conversation.findOne({ 
+      //This query condition uses the "all" operator to ensure that both IDs are present in the members array of the conversation.
       members:{$all: [senderId,chatUser] },}).populate("messages");
     if (!conversation) {
       return res.status(201).json([]);

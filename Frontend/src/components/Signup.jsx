@@ -52,7 +52,7 @@ function Signup() {
           onSubmit={handleSubmit(onSubmit)}
           className="border border-white px-6 py-2 rounded-md space-y-3 w-96 bg-slate-800">
           <h1 className="text-2xl text-center">
-            <span className="text-green-500 font-semibold">Chatigo</span>
+            <span className="text-green-500 text-2xl font-bold">Chatigo</span>
           </h1>
           <h2 className="text-xl text-white font-bold">Signup</h2>
           <br />
