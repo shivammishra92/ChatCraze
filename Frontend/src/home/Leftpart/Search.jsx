@@ -40,7 +40,7 @@ function Search() {
               />
             </label>
             <button>
-              <HiOutlineSearch className="text-5xl p-3 hover:bg-gray-600 rounded-full duration-300" />
+              <HiOutlineSearch className="text-5xl p-2 hover:bg-gray-600 rounded-full duration-300" />
             </button>
           </div>
         </form>

@@ -5,15 +5,26 @@ import Typesend from "./Typesend";
 import useConversation from "../../zustand/useConversation.js";
 import { useAuth } from "../../context/AuthProvider.jsx";
 import { CiMenuFries } from "react-icons/ci";
-import avatar2 from '../../../images/avatar2.jpg'
+import useGetAllUsers from "../../context/useGetAllUsers.jsx";
+import { useSocketContext } from "../../context/SocketContext.jsx";
 
 function Right() {
   const { selectedConversation, setSelectedConversation } = useConversation();
+  const [allUsers, loading] = useGetAllUsers();
+  // const { socket, onlineUsers } = useSocketContext();
+  // console.log(onlineUsers)
+  // if(onlineUsers.length > 1)
+  //   console.log("more than one")
+  
+  // if(allUsers.length > 1)
+  // console.log(allUsers[0]._id)
+
   useEffect(() => {
     return setSelectedConversation(null);
   }, [setSelectedConversation]);
+
   return (
-    <div className="w-full text-white bg-[url('https://e1.pxfuel.com/desktop-wallpaper/461/478/desktop-wallpaper-whatsapp-dark-whatsapp-chat.jpg')]">
+    <div className={`w-full text-white`}>
       {/* <img src={avatar2} alt="avatar image"/> */}
       <div>
         {!selectedConversation ? (<NoChatSelected /> ) :
@@ -34,12 +45,14 @@ function Right() {
 
 export default Right;
 
+//if no-chat selected then background image will be set to default color
+//else it will refer to messages component to display the chat bg-image
 const NoChatSelected = () => {
   const [authUser] = useAuth();
   console.log(authUser);
   return (
     <>
-      <div className="relative">
+      <div className="relative bg-slate-700">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-ghost drawer-button lg:hidden absolute left-5"

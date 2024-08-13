@@ -47,10 +47,10 @@ function Signup() {
 
   return (
     <>
-      <div className="flex h-screen items-center justify-center  bg-[url('https://img.freepik.com/free-vector/color-seamless-space-pattern_102902-2360.jpg?w=900&t=st=1723231138~exp=1723231738~hmac=659987eea3c735ed06dd064d7f6576964ba52f6bc80a744dc200f3ea4cd358a1')]">
+      <div className="flex h-screen items-center justify-center bg-[url('../../images/landingImg2.jpg')]">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="border border-white px-6 py-2 rounded-md space-y-3 w-96 bg-slate-800">
+          className="border border-white px-6 py-2 rounded-md space-y-3 w-96 bg-slate-950">
           <h1 className="text-2xl text-center">
             <span className="text-green-500 text-2xl font-bold">Chatigo</span>
           </h1>

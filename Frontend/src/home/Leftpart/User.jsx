@@ -4,15 +4,15 @@ import { useSocketContext } from "../../context/SocketContext.jsx";
 import avatar2 from '../../../images/avatar2.jpg'
 
 
-function User({ user }) {
+export default function User({user}) {
   // console.log((user))
   const { selectedConversation, setSelectedConversation } = useConversation();
   const isSelected = selectedConversation?._id === user._id;
   const { socket, onlineUsers } = useSocketContext();
   const isOnline = onlineUsers.includes(user._id);
-  if( isOnline===true)
-    console.log(user);
-  // console.log(isOnline)
+  // if( isOnline===true)
+  //   console.log(user);
+  // console.log(isSelected)
   return (
     <div
       className={`hover:bg-slate-600 duration-300 ${isSelected ? "bg-slate-900" : ""}`}
@@ -33,4 +33,4 @@ function User({ user }) {
   );
 }
 
-export default User;
+//export default User;
