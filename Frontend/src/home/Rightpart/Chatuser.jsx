@@ -1,21 +1,57 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import useConversation from "../../zustand/useConversation.js";
 import { useSocketContext } from "../../context/SocketContext.jsx";
 import { CiMenuFries } from "react-icons/ci";
-import avatar2 from '../../../images/avatar2.jpg'
+import avatar2 from '../../../images/avatar2.jpg';
+import { useTypingContext } from "../../context/TypeContext.jsx";
 
 
 function Chatuser() {
   const { selectedConversation } = useConversation();
-  const { onlineUsers } = useSocketContext();
+  const { socket, onlineUsers } = useSocketContext();
+  const [typingStatus, setTypingStatus] = useState(false);
+  // console.log(selectedConversation._id)
+
+  useEffect(() => {
+    // Listen for typing events
+    socket.on("typing", ({ conversationId, typing }) => {
+      console.log("Typing event received", typing);
+      if (conversationId === selectedConversation._id) {
+        setTypingStatus(typing);
+      }
+    });
+
+    return () => {
+      socket.off("typing"); // Cleanup the event listener
+    };
+  }, [socket, selectedConversation._id]);
+
+  // const {typing} = useTypingContext();
+  // console.log("typing",typing)
+
+  //  let onlineOtherSide = selectedConversation._id;
+  //  console.log(onlineUsers);
+  //  if(onlineOtherSide === onlineUsers[0])onlineOtherSide = onlineUsers[1];
+  //  console.log("current user",selectedConversation._id);
+  //  console.log("online other side",onlineOtherSide);
 
   const getOnlineUsersStatus = (userId) => {
     return onlineUsers.includes(userId) ? "online" : "offline";
   };
-  // console.log(selectedConversation);
+  const getTypingOrOnlineStatus = () => {
+    if (typingStatus) return "typing...";
+    return getOnlineUsersStatus(selectedConversation._id);
+  };
 
-  //const isOnline = onlineUsers.includes(user._id);
+  // const getTypingOrOnlineStatus = (onlineOtherSide) =>{
+  //   if(typing)return "typing...";
+  //   else if(!typing)return "online";
+  //   else return "offline";
+  // };
+  //console.log(selectedConversation);
   //console.log(onlineUsers);
+
+  
    
   return (
     <div className="ml-0 relative flex items-end h-[8%] justify-start gap-4 bg-slate-800  rounded-sm">
@@ -36,7 +72,8 @@ function Chatuser() {
         <div>
           <h1 className="text-xl">{selectedConversation.fullname}</h1>
           <span className="text-sm">
-            {getOnlineUsersStatus(selectedConversation._id)}
+            {getTypingOrOnlineStatus()}
+            {/* {getOnlineUsersStatus(selectedConversation._id)} */}
           </span>
         </div>
       </div>

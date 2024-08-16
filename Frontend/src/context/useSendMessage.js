@@ -14,7 +14,8 @@ const useSendMessage = () => {
       );
       setMessage([...messages, res.data]);
       setLoading(false);
-    } catch (error) {
+    }
+    catch (error) {
       console.log("Error in send messages", error);
       setLoading(false);
     }

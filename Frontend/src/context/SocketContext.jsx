@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthProvider";
 import io from "socket.io-client";
-const socketContext = createContext();
 
+const socketContext = createContext();
 // it is a hook.
 export const useSocketContext = () => {
   return useContext(socketContext);
@@ -25,13 +25,15 @@ export const SocketProvider = ({ children }) => {
         setOnlineUsers(users);
       });
       return () => socket.close();
-    } else {
+    } 
+    else {
       if (socket) {
         socket.close();
         setSocket(null);
       }
     }
   }, [authUser]);
+
   return (
     <socketContext.Provider value={{ socket, onlineUsers }}>
       {children}

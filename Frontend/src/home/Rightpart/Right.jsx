@@ -52,7 +52,7 @@ const NoChatSelected = () => {
   console.log(authUser);
   return (
     <>
-      <div className="relative bg-slate-700">
+      <div className="relative bg-slate-800">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-ghost drawer-button lg:hidden absolute left-5"
@@ -66,7 +66,7 @@ const NoChatSelected = () => {
               {authUser.user.fullname}
             </span>
             <br />
-            No chat selected, please start conversation by selecting anyone from your contacts
+            Start your conversation by selecting anyone from your contacts
           </h1>
         </div>
       </div>

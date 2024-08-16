@@ -5,6 +5,7 @@ import Message from "../models/message.model.js";
 export const sendMessage = async (req, res) => {
   try {
     const { message } = req.body;
+    console.log(req.body.message)
     const { id: receiverId } = req.params; //jisko msg bhejna hai uski id hum request se nikal rahe
     const senderId = req.user._id; // current logged in user
     let conversation = await Conversation.findOne({
@@ -17,13 +18,14 @@ export const sendMessage = async (req, res) => {
         members: [senderId, receiverId],
       });
     }
+    //storing the message in our message model
     const newMessage = new Message({
       senderId,
       receiverId,
       message,
     });
     if (newMessage) {
-      conversation.messages.push(newMessage._id);
+      conversation.messages.push(newMessage._id);//conversation me messages naam ka array hai usme hum newMessage ki _id push kar rahe hain
     }
     // await conversation.save()
     // await newMessage.save();
@@ -39,6 +41,7 @@ export const sendMessage = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+ 
 
 //now to fetch msgs from the database
 export const getMessage = async (req, res) => {
