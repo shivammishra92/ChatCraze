@@ -61,7 +61,7 @@ const NoChatSelected = () => {
         </label>
         <div className="flex h-screen items-center justify-center text-white">
           <h1 className="text-center">
-            Welcome{" "}
+            Hey!! {" "}
             <span className="font-semibold text-xl text-green-500">
               {authUser.user.fullname}
             </span>
