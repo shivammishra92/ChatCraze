@@ -27,3 +27,11 @@ login and registration using JWT.
 - Responsive design for mobile as well as windows users
 - Sleek and attractive design implementation
 
+## Screenshots
+
+![App Screenshot](./appImages/Screenshot%20(100).png)
+![App Screenshot](./appImages/Screenshot%20(101).png)
+![App Screenshot](./appImages/Screenshot%20(97).png)
+![App Screenshot](./appImages/Screenshot%20(98).png)
+![App Screenshot](./appImages/Screenshot%20(99).png)
+
