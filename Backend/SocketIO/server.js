@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3001",
+    origin: "http://localhost:3001",//PORT at which frontend is running
     methods: ["GET", "POST"],
   },
 });
@@ -26,10 +26,10 @@ io.on("connection", (socket) => {
   const userId = socket.handshake.query.userId;
   if (userId) {
     users[userId] = socket.id;
-    console.log("Hello ", users);
+    console.log("Mapping -> ", users);
   }
-  // used to send the events to all connected users
-  io.emit("getOnlineUsers", Object.keys(users));
+  // used to send the event to all connected users
+  io.emit("getOnlineUsers", Object.keys(users));//"getOnlineUsers" is just a name given
 
   // used to listen client side events emitted by server side (server & client)
   socket.on("disconnect", () => {

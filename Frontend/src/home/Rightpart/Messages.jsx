@@ -17,7 +17,7 @@ function Messages() {
           behavior: "smooth",
         });
       }
-    }, 100);
+    }, 10);
   }, [messages]);
 
   return (

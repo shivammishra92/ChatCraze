@@ -12,11 +12,11 @@ const useGetMessage = () => {
       if (selectedConversation && selectedConversation._id) {
         try {
           const res = await axios.get(
-            `/api/message/get/${selectedConversation._id}`
-          );
+            `/api/message/get/${selectedConversation._id}`);
           setMessage(res.data);
           setLoading(false);
-        } catch (error) {
+        }
+         catch (error) {
           console.log("Error in getting messages", error);
           setLoading(false);
         }
@@ -24,6 +24,7 @@ const useGetMessage = () => {
     };
     getMessages();
   }, [selectedConversation, setMessage]);
+  
   return { loading, messages };
 };
 
