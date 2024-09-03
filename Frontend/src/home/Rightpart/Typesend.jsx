@@ -1,9 +1,18 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect,useCallback } from "react";
 import { IoSend } from "react-icons/io5";
 import useSendMessage from "../../context/useSendMessage.js";
 import { useTypingContext } from "../../context/TypeContext.jsx";
 import useConversation from "../../zustand/useConversation.js";
 import { useSocketContext } from "../../context/SocketContext.jsx";
+
+
+const debounce = (func, delay) => {
+  let timeout;
+  return (...args) => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), delay);
+  };
+};
 
 function Typesend() {
   const [message, setMessage] = useState("");
@@ -12,44 +21,36 @@ function Typesend() {
   const { selectedConversation } = useConversation();
   const { socket, onlineUsers } = useSocketContext();
 
-  // let otherSideUser = selectedConversation._id;
-  //  if(otherSideUser == onlineUsers[0])otherSideUser = onlineUsers[1];
-
-  // console.log(selectedConversation._id)
-
   const handleSubmit = async (e) => {
-    console.log(e);
     e.preventDefault();
     await sendMessages(message);
     setMessage("");
-    // setTyping(false);
+    console.log("Typing stopped after message send");
     socket.emit("typing", { conversationId: selectedConversation._id, typing: false });
   };
-  const handleInputChange = (e) => {
-    setMessage(e.target.value);
+
+  // Debounced typing event emitter
+  const emitTypingEvent = useCallback(debounce(() => {
     console.log("Typing event emitted");
     socket.emit("typing", { conversationId: selectedConversation._id, typing: true });
+  }, 300), [socket, selectedConversation._id]);
+
+  const handleInputChange = (e) => {
+    setMessage(e.target.value);
+    if (e.target.value !== "") {
+      emitTypingEvent();
+    } 
+    else {
+      console.log("Typing stopped as input is cleared");
+      socket.emit("typing", { conversationId: selectedConversation._id, typing: false });
+    }
   };
-
-  // const handleInputChange = (e) =>{
-  //   setMessage(e.target.value);
-  //   // if(onlineUsers.includes(otherSideUser) && !typing)setTyping(true);
-  //   if(!typing)setTyping(true);
-  // };
-
-  // useEffect(() => {
-  //   if (typing) {
-  //     const timeout = setTimeout(() => setTyping(false), 5000); // Reset after 1 second
-  //     return () => clearTimeout(timeout);
-  //   }
-  // }, [message]);
 
   useEffect(() => {
     if (message === "") {
       socket.emit("typing", { conversationId: selectedConversation._id, typing: false });
     }
   }, [message, socket, selectedConversation._id]);
-
 
   return (
     <form onSubmit={handleSubmit}>

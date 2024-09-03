@@ -1,7 +1,7 @@
 import React from "react";
 import useConversation from "../../zustand/useConversation.js";
 import { useSocketContext } from "../../context/SocketContext.jsx";
-import avatar2 from '../../../images/avatar2.jpg'
+import avatar2 from '../../images/avatar2.jpg'
 
 
 export default function User({user}) {

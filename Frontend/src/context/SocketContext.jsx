@@ -38,7 +38,8 @@ export const SocketProvider = ({ children }) => {
   }, [authUser]);
 
   return (
-    <socketContext.Provider value={{ socket, onlineUsers }}>//value me object pass kar rahe hain
+    //value me object pass kar rahe hain
+    <socketContext.Provider value={{ socket, onlineUsers }}>
       {children}
     </socketContext.Provider>
   );

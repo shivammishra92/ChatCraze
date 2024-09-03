@@ -6,25 +6,34 @@ import avatar2 from '../../../images/avatar2.jpg';
 import { useTypingContext } from "../../context/TypeContext.jsx";
 
 
+
 function Chatuser() {
   const { selectedConversation } = useConversation();
   const { socket, onlineUsers } = useSocketContext();
   const [typingStatus, setTypingStatus] = useState(false);
   // console.log(selectedConversation._id)
 
+  console.log("Socket:", socket);
+
   useEffect(() => {
+    if (socket){
+      console.log("socket found");
+      // return;
+    }
+    console.log("Setting up typing listener for conversation:", selectedConversation?._id);
     // Listen for typing events
     socket.on("typing", ({ conversationId, typing }) => {
       console.log("Typing event received", typing);
-      if (conversationId === selectedConversation._id) {
+      if (conversationId === selectedConversation?._id) {
         setTypingStatus(typing);
       }
     });
 
     return () => {
+      console.log("Cleaning up typing listener");
       socket.off("typing"); // Cleanup the event listener
     };
-  }, [socket, selectedConversation._id]);
+  }, [socket, selectedConversation?._id]);
 
   // const {typing} = useTypingContext();
   // console.log("typing",typing)
@@ -39,7 +48,7 @@ function Chatuser() {
     return onlineUsers.includes(userId) ? "online" : "offline";
   };
   const getTypingOrOnlineStatus = () => {
-    if (typingStatus) return "typing...";
+    if (typingStatus === true) return "typing...";
     return getOnlineUsersStatus(selectedConversation._id);
   };
 
