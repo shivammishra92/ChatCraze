@@ -3,6 +3,7 @@ import Message from "./Message";
 import useGetMessage from "../../context/useGetMessage.js";
 import Loading from "../../components/Loading.jsx";
 import useGetSocketMessage from "../../context/useGetSocketMessage.js";
+import chatBg from '../../images/chatBg.jpg'
 
 function Messages() {
   const { loading, messages } = useGetMessage();
@@ -23,7 +24,7 @@ function Messages() {
   return (
     <div
       className="flex-1 overflow-y-auto  bg-[url('../../images/chatBg.jpg')]"
-      style={{ minHeight: "calc(92vh - 8vh)" }}
+      style={{ minHeight: "calc(92vh - 8vh)" ,backgroundImage: `url(${chatBg})` }}
     >
       {loading ? (<Loading />) : 
       ( messages.length > 0 &&

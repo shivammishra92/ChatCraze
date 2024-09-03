@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import landingImg2 from '../images/landingImg2.jpg'
 
 function Signup() {
   const [authUser, setAuthUser] = useAuth();
@@ -47,7 +48,9 @@ function Signup() {
 
   return (
     <>
-      <div className="flex h-screen items-center justify-center bg-[url('../../images/landingImg2.jpg')]">
+      <div className="flex h-screen items-center justify-center bg-[url('../../images/landingImg2.jpg')]"
+      style={{ backgroundImage: `url(${landingImg2})` }}
+      >
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="border border-white px-6 py-2 rounded-md space-y-3 w-96 bg-slate-950">

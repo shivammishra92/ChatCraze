@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import useConversation from "../../zustand/useConversation.js";
 import { useSocketContext } from "../../context/SocketContext.jsx";
 import { CiMenuFries } from "react-icons/ci";
-import avatar2 from '../../../images/avatar2.jpg';
+import avatar2 from '../../images/avatar2.jpg';
 import { useTypingContext } from "../../context/TypeContext.jsx";
 
 
