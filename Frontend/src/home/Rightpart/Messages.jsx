@@ -23,7 +23,7 @@ function Messages() {
 
   return (
     <div
-      className="flex-1 overflow-y-auto  bg-[url('../../images/chatBg.jpg')]"
+      className="flex-1 overflow-y-auto bg-fixed"
       style={{ minHeight: "calc(92vh - 8vh)" ,backgroundImage: `url(${chatBg})` }}
     >
       {loading ? (<Loading />) : 
