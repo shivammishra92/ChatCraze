@@ -13,7 +13,7 @@ function Chatuser() {
   const [typingStatus, setTypingStatus] = useState(false);
   // console.log(selectedConversation._id)
 
-  //console.log("Socket:", socket);
+  console.log("Socket:", socket);
 
   useEffect(() => {
     if (socket){
