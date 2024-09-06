@@ -34,6 +34,7 @@ function Typesend() {
     console.log("Typing event emitted");
     socket.emit("typing", { conversationId: selectedConversation._id, typing: true });
   }, 300), [socket, selectedConversation._id]);
+  
 
   const handleInputChange = (e) => {
     setMessage(e.target.value);

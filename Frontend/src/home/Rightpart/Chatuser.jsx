@@ -13,16 +13,18 @@ function Chatuser() {
   const [typingStatus, setTypingStatus] = useState(false);
   // console.log(selectedConversation._id)
 
-  console.log("Socket:", socket);
+  //console.log("Socket:", socket);
 
   useEffect(() => {
     if (socket){
       console.log("socket found");
       // return;
     }
+    console.log(socket.id);//it is the logged in user id
     console.log("Setting up typing listener for conversation:", selectedConversation?._id);
     // Listen for typing events
     socket.on("typing", ({ conversationId, typing }) => {
+      console.log(conversationId);
       console.log("Typing event received", typing);
       if (conversationId === selectedConversation?._id) {
         setTypingStatus(typing);
