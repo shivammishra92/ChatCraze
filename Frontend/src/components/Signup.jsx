@@ -31,6 +31,7 @@ function Signup() {
       confirmPassword: data.confirmPassword,
     };
     // console.log(userInfo);
+    // await axios.post("https://chatigo-backend.onrender.com/api/user/signup", userInfo)
     await axios.post("/api/user/signup", userInfo)
       .then((response) => {
         if (response.data) {

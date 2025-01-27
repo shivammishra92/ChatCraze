@@ -8,7 +8,8 @@ export default defineConfig({
     port: 3001,
     proxy: {
       "/api": {
-        target: "http://localhost:4005",
+        //target: "https://chatigo-backend.onrender.com",//backend url
+         target: "http://localhost:4005",//backend url
         changeOrigin: true,
       },
     },

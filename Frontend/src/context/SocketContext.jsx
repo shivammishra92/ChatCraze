@@ -17,7 +17,8 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     if (authUser) {
       //backend running at 4005
-      const socket = io("http://localhost:4005", {
+      // const socket = io("https://chatigo-backend.onrender.com", {
+        const socket = io("https://localhost:4005", {
         query: {
           userId: authUser.user._id,
         },

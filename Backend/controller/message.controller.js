@@ -9,7 +9,7 @@ export const sendMessage = async (req, res) => {
     const { id: receiverId } = req.params; //jisko msg bhejna hai uski id hum request se nikal rahe
     const senderId = req.user._id; // current logged in user
     let conversation = await Conversation.findOne({
-      members: { $all: [senderId, receiverId] },
+      members: { $all: [senderId, receiverId] }
     });
 
     //if no conversation between two users then create it
@@ -46,11 +46,11 @@ export const sendMessage = async (req, res) => {
 //now to fetch msgs from the database
 export const getMessage = async (req, res) => {
   try {
-    const { id: chatUser } = req.params;//receiver
+    const { id: chatUser } = req.params;//receiver(chatUser is just a name given)
     const senderId = req.user._id; // current logged in user
     let conversation = await Conversation.findOne({ 
       //This query condition uses the "all" operator to ensure that both IDs are present in the members array of the conversation.
-      members:{$all: [senderId,chatUser] },}).populate("messages");
+      members:{$all: [senderId,chatUser] }}).populate("messages");
     if (!conversation) {
       return res.status(201).json([]);
     }
