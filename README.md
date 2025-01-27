@@ -29,11 +29,10 @@ login and registration using JWT.
 
 ## Screenshots
 
-![App Screenshot](./appImages/Screenshot%20(97).png)
-![App Screenshot](./appImages/Screenshot%20(99).png)
-![App Screenshot](./appImages/Screenshot%20(102).png)
-![App Screenshot](./appImages/Screenshot%20(100).png)
-![App Screenshot](./appImages/Screenshot%20(101).png)
+![App Screenshot](./appImages/pic4.png)
+![App Screenshot](./appImages/pic3.png)
+![App Screenshot](./appImages/pic2.png)
+![App Screenshot](./appImages/pic1.png)
 
 
 
